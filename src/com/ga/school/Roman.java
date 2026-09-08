@@ -1,6 +1,7 @@
 package com.ga.school;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Roman {
@@ -11,7 +12,7 @@ public class Roman {
         // Here, we're returning an empty string, but you need to build your
         // algorithm and return a String data type accordingly.
 
-        Map<String, Integer> symbolValue = new HashMap<String, Integer>();
+        Map<String, Integer> symbolValue = new LinkedHashMap<String, Integer>();
         symbolValue.put("I",1);
         symbolValue.put("V",5);
         symbolValue.put("X",10);
@@ -22,23 +23,21 @@ public class Roman {
 
        while (total < value) {
            for (Map.Entry<String, Integer> entry : symbolValue.entrySet()) {
-               if(total < entry.getValue()){
+               if(total + entry.getValue() <= value){
                    total += entry.getValue();
                    word = word + entry.getKey();
-
                }
 
            }
        }
-
         return word;
     }
 
     public static void main(String[] args) {
-//        System.out.println(intToRoman(3));
+        System.out.println(intToRoman(3));
         System.out.println(intToRoman(4));
-//        System.out.println(intToRoman(9));
-//        System.out.println(intToRoman(58));
-//        System.out.println(intToRoman(1994));
+        System.out.println(intToRoman(9));
+        System.out.println(intToRoman(58));
+        System.out.println(intToRoman(1994));
     }
 }
